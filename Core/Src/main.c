@@ -48,7 +48,6 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 float dutyCycle = 0.5f;
-uint8_t flag = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,15 +103,19 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+  // TIM1은 Advanced Timer이므로 Main Output Enable 필요
+//  __HAL_TIM_MOE_ENABLE(&htim1);
+  setDuty(dutyCycle);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-      if (flag) {
+      if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET) {
+          dutyCycle += 0.000001f;
+          if (dutyCycle > 1.0f) dutyCycle = 0.0f;
           setDuty(dutyCycle);
-          flag = 0;
       }
     /* USER CODE END WHILE */
 
