@@ -1,0 +1,34 @@
+# Build outputs
+Debug/
+Release/
+
+# Object files
+*.o
+*.obj
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.su
+*.d
+*.cyclo
+
+# IDE specific files
+.settings/
+.cproject
+.project
+.mxproject
+
+# Debug configuration (optional - 프로젝트마다 다를 수 있음)
+*.launch
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
