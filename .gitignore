@@ -14,14 +14,11 @@ Release/
 *.d
 *.cyclo
 
-# IDE specific files
+# IDE specific files (workspace settings만 제외)
 .settings/
-.cproject
-.project
-.mxproject
 
-# Debug configuration (optional - 프로젝트마다 다를 수 있음)
-*.launch
+# Debug configuration은 팀마다 다를 수 있으므로 포함
+# *.launch
 
 # Temporary files
 *.swp

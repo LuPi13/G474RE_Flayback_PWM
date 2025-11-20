@@ -19,6 +19,15 @@ cd G474RE_Flayback_PWM
 
 ### 2. STM32CubeIDE에서 프로젝트 임포트
 
+#### 방법 1: Import Existing Projects (권장)
+1. STM32CubeIDE 실행
+2. **File** → **Import...**
+3. **General** → **Existing Projects into Workspace** 선택
+4. **Next** 클릭
+5. **Select root directory**에서 클론한 프로젝트 폴더 선택
+6. 프로젝트가 체크된 상태에서 **Finish** 클릭
+
+#### 방법 2: Open Projects from File System
 1. STM32CubeIDE 실행
 2. **File** → **Open Projects from File System...**
 3. **Directory** 버튼을 클릭하여 클론한 프로젝트 폴더 선택
@@ -69,12 +78,19 @@ make -j4
 - `.gitignore`에 의해 빌드 출력물(`Debug/`, `Release/`)은 저장소에 포함되지 않습니다
 - 처음 클론 후 빌드하면 자동으로 필요한 출력 디렉토리가 생성됩니다
 - `.ioc` 파일을 수정한 경우 STM32CubeMX로 코드 재생성이 필요할 수 있습니다
+- `.project`, `.cproject` 파일은 프로젝트 구성에 필수이므로 Git에 포함되어야 합니다
 
 ## 문제 해결
+
+### 프로젝트 임포트가 안될 때
+- `.project`와 `.cproject` 파일이 프로젝트 루트에 있는지 확인
+- 없다면 이 파일들이 Git에 커밋되었는지 확인
+- STM32CubeMX로 `.ioc` 파일을 열어 프로젝트 재생성
 
 ### 빌드 오류 발생 시
 1. **Project** → **Clean...** 실행
 2. 프로젝트 재빌드
+3. 인덱서 재구성: 프로젝트 우클릭 → **Index** → **Rebuild**
 
 ### HAL 드라이버 누락 시
 - `Drivers/` 폴더가 제대로 클론되었는지 확인
